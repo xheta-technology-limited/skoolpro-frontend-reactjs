@@ -6,10 +6,13 @@ export default function Home() {
   return (
     <div className="flex w-full flex-col">
       <Navbar />
-      <Hero />
-      <Services />
-      <WhyUs />
-      <ContactUs />
+      <div className="max-w-360 mx-auto">
+        <Hero />
+        <Services />
+        <WhyUs />
+        <ContactUs />
+      </div>
+
       <Footer />
     </div>
     // <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">

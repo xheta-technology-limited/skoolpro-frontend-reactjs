@@ -1,7 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
-
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -10,9 +9,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-serif: var(--font-geist-mono);
-  --font-lora: var(--font-lora);
+  --font-lora: "Lora", serif;
   --font-heading: var(--font-mono);
-  --font-body: var(--font-poppins);
+  --font-body: "Poppins", sans-serif;
   /* colors */
   --color-base-white: #fafafa;
   --color-base-black: #0a0a0b;

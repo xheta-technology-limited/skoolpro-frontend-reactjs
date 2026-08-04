@@ -16,16 +16,12 @@ const Hero = () => {
           src={group}
           alt=""
           aria-hidden="true"
-          height={40}
-          width={40}
           className="absolute left-[84%] top-[87.5%] h-10 w-10"
         />
 
         {/* logo: flex on mobile, absolute-overlapping on lg */}
         <div className="flex h-15.5 w-15.5 items-center justify-center lg:absolute lg:top-25 lg:left-11.75 lg:h-28.75 lg:w-28.75">
           <img
-            width={69}
-            height={69}
             src={union}
             alt=""
             className="h-[41.4px] w-[41.4px] lg:h-17.25 lg:w-17.25"

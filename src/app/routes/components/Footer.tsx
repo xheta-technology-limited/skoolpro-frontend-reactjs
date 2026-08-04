@@ -2,13 +2,8 @@ import { Link } from "react-router-dom";
 import { FaFacebookF, FaXTwitter } from "react-icons/fa6";
 import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { AdmiralYellow11 } from "@/components/icons/logos";
-import { useParams } from "react-router-dom";
 
 const Footer = () => {
-  const { pathname } = useParams();
-  if (pathname !== "/") {
-    return null;
-  }
   return (
     <div className="bg-primary px-4 pb-13 pt-8 sm:px-8 sm:pb-16 sm:pt-9 md:px-16 md:pb-20 md:pt-10 lg:px-20 lg:pb-24 lg:pt-12 xl:px-25 xl:pb-16 xl:pt-15">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">

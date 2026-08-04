@@ -1,4 +1,12 @@
 import { Text } from "@/components/ui";
+import laptop from "@/assets/images/laptop.png";
+import calendar from "@/assets/images/calendar.png";
+import note from "@/assets/images/note.png";
+import dollar from "@/assets/images/dollar.png";
+import tie from "@/assets/images/tie.png";
+import searchLens from "@/assets/images/searchLens.png";
+import pointer from "@/assets/images/cta-pointer.png";
+import cycle from "@/assets/images/cycle.png";
 
 interface WhyUsItem {
   id: number;
@@ -11,42 +19,42 @@ interface WhyUsItem {
 const data: WhyUsItem[] = [
   {
     id: 1,
-    img: "/images/laptop.png",
+    img: laptop,
     color: "#8180FF",
     heading: "Seamless Administrative Process",
     body: "Eliminate manual errors and save time by automating administrative tasks with Skoolpro. Our platform streamlines enrolment, fee payments, and results collation for a smoother school experience.",
   },
   {
     id: 3,
-    img: "/images/calendar.png",
+    img: calendar,
     color: "#15B097",
     heading: "Attendance and Result Tracking",
     body: "Track student attendance and academic performance effortlessly to ensure improved student outcomes.",
   },
   {
     id: 2,
-    img: "/images/note.png",
+    img: note,
     color: "#FFD369",
     heading: "AI Integration",
     body: "Reduce workload, improve accuracy, and optimize processes, to ensure  higher productivity by taking advantage of  the power of artificial intelligence for smart automation with Skoolpro",
   },
   {
     id: 4,
-    img: "/images/dollar.png",
+    img: dollar,
     color: "#8180FF",
     heading: "School Fees Payment",
     body: "Simplify the fee payment process with a secure, user-friendly system. Skoolpro ensures hassle-free transactions, boosting efficiency for both parents and school administrators.",
   },
   {
     id: 5,
-    img: "/images/tie.png",
+    img: tie,
     color: "#FFD369",
     heading: "Manage your Payroll",
     body: "Keep your payroll in check with our automated solution. Manage staff salaries and payments with precision, ensuring timely payouts every time.",
   },
   {
     id: 6,
-    img: "/images/searchLens.png",
+    img: searchLens,
     color: "#15B097",
     heading: "Income and Expense Tracking",
     body: "Take charge of your school's financial health with real-time income and expense tracking. Skoolpro provides detailed reports, making financial management transparent and easier to handle.",
@@ -124,7 +132,7 @@ const WhyUS = () => {
             <button className="inline-flex items-center gap-2 rounded-2xl bg-secondary px-6 py-2 font-lora text-[16px] font-normal leading-[1.2] text-center text-primary-1000 md:py-3 lg:font-(family-name:--font-poppins) lg:text-[24px] lg:leading-none">
               Get started for free
               <img
-                src="/images/cta-pointer.png"
+                src={pointer}
                 alt="arrow"
                 className="h-10 w-auto max-w-full"
                 width={48}
@@ -133,7 +141,7 @@ const WhyUS = () => {
             </button>
           </div>
           <img
-            src={"/images/cycle.png"}
+            src={cycle}
             alt="wheel image"
             width={500}
             height={415}

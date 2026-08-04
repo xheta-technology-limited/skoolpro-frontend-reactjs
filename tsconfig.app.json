@@ -8,9 +8,8 @@
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
-    "baseUrl": ".",
 
     /* Bundler mode */
     "moduleResolution": "bundler",

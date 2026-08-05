@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { HTMLAttributes } from "react";
+import React from "react";
 
 type props = {
   size: number;

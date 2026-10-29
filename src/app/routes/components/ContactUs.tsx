@@ -16,12 +16,25 @@ import { CountryCodeDropdown } from "../../../components/ui/Dropdown";
 const BASE_URL = "https://waitlist.skoolpro.net";
 const callingCodes = countryCodesList.customList(
   "countryCode",
-  "{countryCallingCode}",
+  "{countryCallingCode}"
 );
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type FormErrors = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+};
 
 const ContactUs = () => {
   const [countryCode, setCountryCode] = useState("NG");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const clearError = (field: keyof FormErrors) => {
+    setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));
+  };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,6 +51,32 @@ const ContactUs = () => {
       message: String(formData.get("message") ?? "").trim(),
     };
 
+    const nextErrors: FormErrors = {};
+
+    if (!payload.name) {
+      nextErrors.name = "Name is required.";
+    }
+
+    if (!payload.email) {
+      nextErrors.email = "Email is required.";
+    } else if (!EMAIL_REGEX.test(payload.email)) {
+      nextErrors.email = "Enter a valid email address.";
+    }
+
+    if (!phone) {
+      nextErrors.phone = "Phone number is required.";
+    }
+
+    if (!payload.message) {
+      nextErrors.message = "Message is required.";
+    }
+
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -53,20 +92,19 @@ const ContactUs = () => {
       const data = await response.json().catch(() => null);
 
       if (!response.ok) {
-        toast.error(
-          data?.message ?? "Something went wrong. Please try again.",
-        );
+        toast.error(data?.message ?? "Something went wrong. Please try again.");
         return;
       }
 
       toast.success(
         data?.message ??
-          "Your demo booking has been received. We will be in touch soon.",
+          "Your demo booking has been received. We will be in touch soon."
       );
       form.reset();
+      setErrors({});
     } catch {
       toast.error(
-        "Unable to send your message. Please check your connection and try again.",
+        "Unable to send your message. Please check your connection and try again."
       );
     } finally {
       setIsSubmitting(false);
@@ -230,8 +268,15 @@ const ContactUs = () => {
                   id="name"
                   name="name"
                   placeholder="Your name"
-                  className="w-full rounded-[8px] border border-[#D0D5DD] bg-white px-4 py-3 shadow-[0px_1px_2px_0px_#1018280D]"
+                  aria-invalid={Boolean(errors.name)}
+                  onChange={() => clearError("name")}
+                  className={`w-full rounded-[8px] border bg-white px-4 py-3 shadow-[0px_1px_2px_0px_#1018280D] ${
+                    errors.name ? "border-red-500" : "border-[#D0D5DD]"
+                  }`}
                 />
+                {errors.name && (
+                  <p className="text-[12px] text-red-500">{errors.name}</p>
+                )}
               </div>
 
               <div className="flex w-full flex-col gap-2">
@@ -245,8 +290,15 @@ const ContactUs = () => {
                   id="email"
                   name="email"
                   placeholder="you@company.com"
-                  className="w-full rounded-[8px] border border-[#D0D5DD] bg-white px-4 py-3 shadow-[0px_1px_2px_0px_#1018280D]"
+                  aria-invalid={Boolean(errors.email)}
+                  onChange={() => clearError("email")}
+                  className={`w-full rounded-[8px] border bg-white px-4 py-3 shadow-[0px_1px_2px_0px_#1018280D] ${
+                    errors.email ? "border-red-500" : "border-[#D0D5DD]"
+                  }`}
                 />
+                {errors.email && (
+                  <p className="text-[12px] text-red-500">{errors.email}</p>
+                )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -255,7 +307,11 @@ const ContactUs = () => {
                     Phone number
                   </Text>
                 </label>
-                <div className="flex h-12 w-full items-center rounded-[8px] border border-[#D0D5DD] bg-white shadow-[0px_1px_2px_0px_#1018280D]">
+                <div
+                  className={`flex h-12 w-full items-center rounded-[8px] border bg-white shadow-[0px_1px_2px_0px_#1018280D] ${
+                    errors.phone ? "border-red-500" : "border-[#D0D5DD]"
+                  }`}
+                >
                   <CountryCodeDropdown
                     value={countryCode}
                     onChange={setCountryCode}
@@ -269,9 +325,14 @@ const ContactUs = () => {
                     id="phone"
                     name="phone"
                     placeholder="908 345 6758"
+                    aria-invalid={Boolean(errors.phone)}
+                    onChange={() => clearError("phone")}
                     className="h-12 w-full border-none px-4 py-3 text-sm outline-none"
                   />
                 </div>
+                {errors.phone && (
+                  <p className="text-[12px] text-red-500">{errors.phone}</p>
+                )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -284,8 +345,15 @@ const ContactUs = () => {
                   id="message"
                   name="message"
                   placeholder="Tell us a little about the project"
-                  className="h-32.75 w-full resize-none rounded-[8px] border border-[#D0D5DD] bg-white px-3.5 py-2.5 shadow-[0px_1px_2px_0px_#1018280D] outline-none"
+                  aria-invalid={Boolean(errors.message)}
+                  onChange={() => clearError("message")}
+                  className={`h-32.75 w-full resize-none rounded-[8px] border bg-white px-3.5 py-2.5 shadow-[0px_1px_2px_0px_#1018280D] outline-none ${
+                    errors.message ? "border-red-500" : "border-[#D0D5DD]"
+                  }`}
                 />
+                {errors.message && (
+                  <p className="text-[12px] text-red-500">{errors.message}</p>
+                )}
               </div>
 
               <button

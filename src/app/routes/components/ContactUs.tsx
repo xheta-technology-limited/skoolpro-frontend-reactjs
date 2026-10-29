@@ -175,18 +175,42 @@ const ContactUs = () => {
             </div>
 
             <div className="flex text-white">
-              <div className="flex h-15 w-15 items-center justify-center">
-                <IconBrandX size={24} />
-              </div>
-              <div className="flex h-15 w-15 items-center justify-center">
-                <IconBrandFacebook size={24} />
-              </div>
-              <div className="flex h-15 w-15 items-center justify-center">
-                <FaLinkedinIn size={24} />
-              </div>
-              <div className="flex h-15 w-15 items-center justify-center">
-                <InstagramLogoIcon size={24} weight="fill" />
-              </div>
+              <a
+                href="https://x.com/xhetatech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex h-15 w-15 items-center justify-center">
+                  <IconBrandX size={24} />
+                </div>
+              </a>
+              <a
+                href="https://web.facebook.com/xheta.tech/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex h-15 w-15 items-center justify-center">
+                  <IconBrandFacebook size={24} />
+                </div>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/xheta-tech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex h-15 w-15 items-center justify-center">
+                  <FaLinkedinIn size={24} />
+                </div>
+              </a>
+              <a
+                href="https://www.instagram.com/xhetatech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex h-15 w-15 items-center justify-center">
+                  <InstagramLogoIcon size={24} weight="fill" />
+                </div>
+              </a>
             </div>
           </div>
         </div>

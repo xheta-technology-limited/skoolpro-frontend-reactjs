@@ -1,7 +1,9 @@
 import group from "@/assets/Group.png";
 import union from "@/assets/Union.png";
 import pointer from "@/assets/images/cta-pointer.png";
+import { useNavigate } from "react-router-dom";
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-20 xl:mx-25 mt-8 sm:mt-9 md:mt-10 lg:mt-12 xl:mt-12.75 mb-8 sm:mb-16 md:mb-24 lg:mb-32 xl:mb-33.75 rounded-lg bg-primary lg:rounded-[48px]">
       <div className="relative mx-auto max-w-360 px-6 pt-5 pb-18.25 sm:px-10 md:px-16 lg:px-20 lg:pt-[118.5px] lg:pb-[118.5px] xl:px-25.25">
@@ -45,8 +47,9 @@ const Hero = () => {
 
           <div className="mx-auto mt-8 text-center lg:mt-12">
             <button
-              className="rounded-2xl px-3 py-2 text-primary"
+              className="rounded-2xl cursor-pointer px-3 py-2 text-primary"
               style={{ backgroundColor: "#FFDF93" }}
+              onClick={() => navigate("/#contact-us")}
             >
               Get started for free
               <img

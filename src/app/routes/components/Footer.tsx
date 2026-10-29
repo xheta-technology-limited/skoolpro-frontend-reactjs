@@ -11,26 +11,46 @@ const Footer = () => {
           <AdmiralYellow11 width={200} height={67} />
         </Link>
         <div className="flex items-center gap-6 lg:gap-11.25 text-white">
-          <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
-            <Link to="/" className="text-white">
+          <a
+            href="https://x.com/xhetatech"
+            className="text-white"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
               <FaXTwitter />
-            </Link>
-          </div>
-          <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
-            <Link to="/" className="text-white">
+            </div>
+          </a>
+          <a
+            href="https://web.facebook.com/xheta.tech/"
+            className="text-white"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
               <FaFacebookF />
-            </Link>
-          </div>
-          <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
-            <Link to="/" className="text-white">
+            </div>
+          </a>
+          <a
+            href="https://www.linkedin.com/company/xheta-tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white"
+          >
+            <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
               <FaLinkedinIn />
-            </Link>
-          </div>
-          <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
-            <Link to="/" className="text-white">
+            </div>
+          </a>
+          <Link
+            to="https://www.instagram.com/xhetatech"
+            className="text-white"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
               <FaInstagram />
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
 

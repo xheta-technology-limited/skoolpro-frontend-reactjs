@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AdmiralBlue11 } from "@/components/icons/logos";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <nav className="flex h-19 items-center justify-between mx-4 sm:mx-8 md:mx-16 lg:mx-20 xl:mx-25 md:mt-10.25 md:h-13.5">
       <AdmiralBlue11
@@ -47,8 +48,11 @@ const Navbar = () => {
         </ul>
       </div>
       <div>
-        <button className="rounded-[13px] bg-primary px-4 py-2 font-normal text-white transition-transform hover:scale-105">
-          Book a Demo
+        <button
+          onClick={() => navigate("/#contact-us")}
+          className="rounded-[13px] bg-primary px-4 py-2 font-normal text-white transition-transform hover:scale-105"
+        >
+          Book a demo
         </button>
       </div>
     </nav>

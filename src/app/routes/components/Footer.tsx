@@ -11,26 +11,26 @@ const Footer = () => {
           <AdmiralYellow11 width={200} height={67} />
         </Link>
         <div className="flex items-center gap-6 lg:gap-11.25 text-white">
-          <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
-            <Link to="/" className="text-white">
+          <Link to="/" className="text-white">
+            <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
               <FaXTwitter />
-            </Link>
-          </div>
-          <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
-            <Link to="/" className="text-white">
+            </div>
+          </Link>
+          <Link to="/" className="text-white">
+            <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
               <FaFacebookF />
-            </Link>
-          </div>
-          <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
-            <Link to="/" className="text-white">
+            </div>
+          </Link>
+          <Link to="/" className="text-white">
+            <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
               <FaLinkedinIn />
-            </Link>
-          </div>
-          <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
-            <Link to="/" className="text-white">
+            </div>
+          </Link>
+          <Link to="/" className="text-white">
+            <div className="flex h-8 w-8 md:h-12 md:w-12 lg:h-15 lg:w-15 items-center justify-center rounded-full border border-white">
               <FaInstagram />
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
 

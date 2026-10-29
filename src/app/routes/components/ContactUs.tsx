@@ -8,14 +8,69 @@ import {
 import { InstagramLogoIcon } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { FaLinkedinIn } from "react-icons/fa";
+import { toast } from "sonner";
+import countryCodesList from "country-codes-list";
 import { Text } from "@/components/ui";
 import { CountryCodeDropdown } from "../../../components/ui/Dropdown";
 
+const BASE_URL = "https://waitlist.skoolpro.net";
+const callingCodes = countryCodesList.customList(
+  "countryCode",
+  "{countryCallingCode}",
+);
+
 const ContactUs = () => {
   const [countryCode, setCountryCode] = useState("NG");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const dialCode = callingCodes[countryCode] ?? "";
+    const phone = String(formData.get("phone") ?? "").replace(/\D/g, "");
+
+    const payload = {
+      name: String(formData.get("name") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      phone: `+${dialCode}${phone}`,
+      message: String(formData.get("message") ?? "").trim(),
+    };
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(`${BASE_URL}/api/demo-bookings`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        toast.error(
+          data?.message ?? "Something went wrong. Please try again.",
+        );
+        return;
+      }
+
+      toast.success(
+        data?.message ??
+          "Your demo booking has been received. We will be in touch soon.",
+      );
+      form.reset();
+    } catch {
+      toast.error(
+        "Unable to send your message. Please check your connection and try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -120,18 +175,42 @@ const ContactUs = () => {
             </div>
 
             <div className="flex text-white">
-              <div className="flex h-15 w-15 items-center justify-center">
-                <IconBrandX size={24} />
-              </div>
-              <div className="flex h-15 w-15 items-center justify-center">
-                <IconBrandFacebook size={24} />
-              </div>
-              <div className="flex h-15 w-15 items-center justify-center">
-                <FaLinkedinIn size={24} />
-              </div>
-              <div className="flex h-15 w-15 items-center justify-center">
-                <InstagramLogoIcon size={24} weight="fill" />
-              </div>
+              <a
+                href="https://x.com/xhetatech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex h-15 w-15 items-center justify-center">
+                  <IconBrandX size={24} />
+                </div>
+              </a>
+              <a
+                href="https://web.facebook.com/xheta.tech/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex h-15 w-15 items-center justify-center">
+                  <IconBrandFacebook size={24} />
+                </div>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/xheta-tech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex h-15 w-15 items-center justify-center">
+                  <FaLinkedinIn size={24} />
+                </div>
+              </a>
+              <a
+                href="https://www.instagram.com/xhetatech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex h-15 w-15 items-center justify-center">
+                  <InstagramLogoIcon size={24} weight="fill" />
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -211,9 +290,10 @@ const ContactUs = () => {
 
               <button
                 type="submit"
-                className="mt-4 rounded-ml bg-primary py-2 text-[14px] text-white"
+                disabled={isSubmitting}
+                className="mt-4 rounded-ml bg-primary py-2 text-[14px] text-white disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Send message
+                {isSubmitting ? "Sending..." : "Send message"}
               </button>
             </div>
           </form>

@@ -7,6 +7,7 @@ import tie from "@/assets/images/tie.png";
 import searchLens from "@/assets/images/searchLens.png";
 import pointer from "@/assets/images/cta-pointer.png";
 import cycle from "@/assets/images/cycle.png";
+import { useNavigate } from "react-router-dom";
 
 interface WhyUsItem {
   id: number;
@@ -62,6 +63,7 @@ const data: WhyUsItem[] = [
 ];
 
 const WhyUS = () => {
+  const navigate = useNavigate();
   return (
     <>
       <section id="why-us" className="mx-4 sm:mx-8 md:mx-16 lg:mx-20 xl:mx-25">
@@ -129,7 +131,10 @@ const WhyUS = () => {
               Contact us today to learn more about how our digital management
               tool can help your business grow and succeed online.
             </p>
-            <button className="inline-flex items-center gap-2 rounded-2xl bg-secondary px-6 py-2 font-lora text-[16px] font-normal leading-[1.2] text-center text-primary-1000 md:py-3 lg:font-(family-name:--font-poppins) lg:text-[24px] lg:leading-none">
+            <button
+              onClick={() => navigate("/#contact-us")}
+              className="inline-flex items-center gap-2 cursor-pointer rounded-2xl bg-secondary px-6 py-2 font-lora text-[16px] font-normal leading-[1.2] text-center text-primary-1000 md:py-3 lg:font-(family-name:--font-poppins) lg:text-[24px] lg:leading-none"
+            >
               Get started for free
               <img
                 src={pointer}

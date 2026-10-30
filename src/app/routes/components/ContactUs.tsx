@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  IconBrandFacebook,
-  IconBrandX,
-  IconMail,
-  IconPhone,
-} from "@tabler/icons-react";
+import { IconBrandFacebook, IconBrandX, IconMail } from "@tabler/icons-react";
 import { InstagramLogoIcon } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -173,13 +168,13 @@ const ContactUs = () => {
                       scale={"content"}
                       className="text-white"
                     >
-                      support@skoolpro.com
+                      support@skoolpro.net
                     </Text>
                   </Link>
                 </div>
               </div>
 
-              <div className="mt-8 flex items-start gap-3 text-white">
+              {/* <div className="mt-8 flex items-start gap-3 text-white">
                 <span>
                   <IconPhone stroke={1} />
                 </span>
@@ -209,7 +204,7 @@ const ContactUs = () => {
                     </Text>
                   </Link>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex text-white">
